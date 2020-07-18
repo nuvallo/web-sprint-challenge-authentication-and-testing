@@ -7,9 +7,13 @@ router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    // if (username) {
-    //   res.status(401).json({ message: "Username already taken" });
-    // }
+    if (username || password === "") {
+      res.status(401).json({ message: "username and password required!" });
+    }
+
+    if (username) {
+      res.status(401).json({ message: "Username already taken" });
+    }
 
     const newUser = {
       username: username,

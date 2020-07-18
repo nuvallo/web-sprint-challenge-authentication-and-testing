@@ -7,7 +7,6 @@ afterAll(async () => {
 });
 
 describe("Authenication integration tests", () => {
-  // Find out why db doesn't get destroyed
   it("POST /api/auth/register", async () => {
     const res = await supertest(server)
       .post("/api/auth/register")
@@ -16,8 +15,6 @@ describe("Authenication integration tests", () => {
     expect(res.headers["content-type"]).toBe("application/json; charset=utf-8");
   });
   it("POST /api/auth/login", async () => {
-    // How to get .env to work correctly
-    // Manually store the secret until fixed
     const res = await supertest(server)
       .post("/api/auth/login")
       .send({ username: "test", password: "test" });
