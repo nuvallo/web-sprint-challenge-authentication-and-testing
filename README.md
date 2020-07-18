@@ -25,12 +25,18 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+   Sessions are stored in the server’s memory, scaling becomes an issue when there is a huge number of users using the system at once.There is no issue with scaling because TOKEN is stored on the client side.
+
+   For multiple devices, session cookies poses issues when APIs are served from a different domain to mobile and web devices.There is no issue with cookies as the JWT is included in the request header.
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+   Bcrypt better secures passwords by hashing the password (scrambling the characters) to be randomized through an algorithm and salted before storing the password into the database.
 
 3. How are unit tests different from integration and end-to-end testing.
+   Unit tests are more used for simplier things like checking values or data types, and Integration testing is for more complex things like functions and endpoints
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
+   Test driven is the process of writing tests before the source code. Thinking about every possible outcome and testing to be sure it behaves as you assume. This allows our code to become more reliable and high quality.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -50,7 +56,7 @@ You are expected to be able to answer questions in these areas. Your responses c
 Your finished project must include all of the following requirements:
 
 - [x] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
-- [ ] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
+- [x] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
 - [x] Configuration for running tests using `Jest`.
 - [x] A **minimum of 2 tests** per API endpoint.
 

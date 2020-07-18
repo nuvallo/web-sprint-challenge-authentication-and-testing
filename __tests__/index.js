@@ -23,5 +23,10 @@ describe("Authenication integration tests", () => {
       .send({ username: "test", password: "test" });
     expect(res.statusCode).toBe(200);
     expect(res.headers["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.body).toBe("welcome test");
+  });
+  it("GET /jokers", async () => {
+    const res = await supertest(server).get("/api/jokes");
+    expect(res.statusCode).toBe(401);
   });
 });
