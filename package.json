@@ -6,8 +6,8 @@
   "scripts": {
     "test:watch": "jest --watch",
     "test": "jest",
-    "start:watch": "nodemon index.js",
-    "start": "node index.js"
+    "start:watch": "nodemon -r dotenv/config index.js",
+    "start": "node -r dotenv/config index.js"
   },
   "repository": {
     "type": "git",
