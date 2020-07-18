@@ -17,6 +17,7 @@ describe("Authenication integration tests", () => {
   });
   it("POST /api/auth/login", async () => {
     // How to get .env to work correctly
+    // Manually store the secret until fixed
     const res = await supertest(server)
       .post("/api/auth/login")
       .send({ username: "test", password: "test" });

@@ -49,9 +49,9 @@ router.post("/login", async (req, res, next) => {
       username: user.username,
     };
 
-    res.cookie("token", jwt.sign(payload, process.env.JWT_SECRET));
+    res.cookie("token", jwt.sign(payload, "secret"));
 
-    console.log(res.cookie("token", jwt.sign(payload, process.env.JWT_SECRET)));
+    console.log(res.cookie("token", jwt.sign(payload, "secret")));
 
     res.status(200).json(`welcome ${user.username}`);
   } catch (error) {
