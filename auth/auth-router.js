@@ -7,13 +7,13 @@ router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    if (username || password === "") {
-      res.status(401).json({ message: "username and password required!" });
-    }
+    // if (username || password === "") {
+    //   res.status(401).json({ message: "username and password required!" });
+    // }
 
-    if (username) {
-      res.status(401).json({ message: "Username already taken" });
-    }
+    // if (username) {
+    //   res.status(401).json({ message: "Username already taken" });
+    // }
 
     const newUser = {
       username: username,
@@ -38,7 +38,7 @@ router.post("/login", async (req, res, next) => {
 
     const passwordValid = await bcrypt.compare(password, user.password);
 
-    if (!passwordValid) {
+    if (!passwordValid || !username) {
       return res.status(501).json({
         message: "Invalid Credentials",
       });
@@ -50,8 +50,6 @@ router.post("/login", async (req, res, next) => {
     };
 
     res.cookie("token", jwt.sign(payload, "secret"));
-
-    console.log(res.cookie("token", jwt.sign(payload, "secret")));
 
     res.status(200).json(`welcome ${user.username}`);
   } catch (error) {

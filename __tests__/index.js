@@ -25,5 +25,6 @@ describe("Authenication integration tests", () => {
   it("GET /jokers", async () => {
     const res = await supertest(server).get("/api/jokes");
     expect(res.statusCode).toBe(401);
+    expect(res.body).toBeDefined();
   });
 });
